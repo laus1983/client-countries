@@ -47,7 +47,7 @@ export function getCountries() {
     dispatch(loading());
     try {
       const { data } = await axios.get(
-        "https://api-countries.luisurdaneta.com/countries"
+        "https://api-countries.luisurdaneta.com/countries/"
       );
       dispatch({
         type: GET_COUNTRIES,
@@ -66,7 +66,7 @@ export function getByName(name, language) {
       const nameToSearch = language ? removeAccents(name) : name.toLowerCase();
       const languageString = language.toString();
       const { data } = await axios.get(
-        `https://api-countries.luisurdaneta.com/countries?name=${nameToSearch}&language=${languageString}`
+        `https://api-countries.luisurdaneta.com/countries/?name=${nameToSearch}&language=${languageString}`
       );
       dispatch({
         type: GET_COUNTRIES_BY_NAME,
@@ -97,7 +97,7 @@ export function getCountriesNames() {
   return async function (dispatch) {
     try {
       const { data } = await axios.get(
-        "https://api-countries.luisurdaneta.com/countries"
+        "https://api-countries.luisurdaneta.com/countries/"
       );
       dispatch({
         type: GET_COUNTRIES_NAMES,
@@ -143,6 +143,8 @@ export function postActivities(activities, language) {
       console.log(activities);
       console.log(language);
       console.log(typeof language);
+      console.log(activities["season"]);
+      console.log(typeof activities["season"]);
       const { data } = await axios.post(
         `https://api-countries.luisurdaneta.com/countries/activities/create?language=${language}`,
         activities
@@ -161,7 +163,7 @@ export function getActivities() {
   return async function (dispatch) {
     try {
       const { data } = await axios.get(
-        "https://api-countries.luisurdaneta.com/countries/activities"
+        "https://api-countries.luisurdaneta.com/countries/activities/see"
       );
       return dispatch({
         type: GET_ACTIVITIES,
