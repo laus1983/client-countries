@@ -140,11 +140,6 @@ export function countriesByActivities(payload) {
 export function postActivities(activities, language) {
   return async function (dispatch) {
     try {
-      console.log(activities);
-      console.log(language);
-      console.log(typeof language);
-      console.log(activities["season"]);
-      console.log(typeof activities["season"]);
       const { data } = await axios.post(
         `https://api-countries.luisurdaneta.com/countries/activities/create?language=${language}`,
         activities
